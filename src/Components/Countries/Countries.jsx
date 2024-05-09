@@ -2,9 +2,10 @@
 import './Countries.css';
 import { useState, useEffect } from 'react';
 import propTypes from 'react';
+import axios from 'axios';
 
 
-const Tile = (props)=>{
+const Tile = (props)=>{ 
 
     return(
         <div className="card">
@@ -17,12 +18,17 @@ const Tile = (props)=>{
 
 const Cards = ()=>{
     const [countires, setCountries] = useState([]);
-    const API_URL = "https://restcountries.com/v3.1/all";
+    // const API_URL = "https://restcountries.com/v3.1/all";
 
     useEffect(()=>{
-        fetch(API_URL)
-        .then((response)=>response.json())
-        .then((data)=>setCountries(data))
+        // fetch(API_URL)
+        // .then((response)=>response.json())
+        // .then((data)=>setCountries(data))
+
+        axios.get("https://restcountries.com/v3.1/all")
+        .then(res=>setCountries(res.data))
+        .catch(err=>console.log(err));
+
     },[])
 
 console.log(countires);
