@@ -8,7 +8,7 @@ import axios from 'axios';
 const Tile = (props)=>{ 
 
     return(
-        <div className="card">
+        <div className="countryCard">
             <img className='cardImg' src={props.src} alt={props.alt} />
             <h4>{props.name}</h4>
         </div>
