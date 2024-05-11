@@ -17,7 +17,12 @@ const Tile = (props)=>{
 
 
 const Cards = ()=>{
-    const [countires, setCountries] = useState([]);
+    const [countries, setCountries] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+
+
+
     // const API_URL = "https://restcountries.com/v3.1/all";
 
     useEffect(()=>{
@@ -31,12 +36,31 @@ const Cards = ()=>{
 
     },[])
 
-console.log(countires);
+    const handleSearch = (event)=>{
+        setSearchTerm(event.target.value)
+    }
+
+
+    const filteredCountries = countries.filter(country =>
+        country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return(
-        <div className="cards-container">
-            {countires.map((country)=><Tile key={country.cca3} src={country.flags.png} alt={country.flags.alt} name={country.name.common} />)}
+        
+        <div>
+            <div className="searchContainer">
+             <input
+                className='search'
+                type="text"
+                placeholder="Search for a country..."
+                value={searchTerm}
+                onChange={handleSearch}
+            />
+            </div>
+            <div className="cards-container">
+            {filteredCountries.map((country)=><Tile key={country.cca3} src={country.flags.png} alt={country.flags.alt} name={country.name.common} />)}
         </div>
+    </div>
     )
 }
 

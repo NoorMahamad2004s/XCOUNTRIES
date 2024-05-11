@@ -32,3 +32,17 @@
     text-align: center;
   }
   
+.searchContainer{
+  align-items: center;
+  text-align: center;
+  
+}
+
+  .search{
+    margin: 10px 10px 25px 10px;
+    padding: 8px;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+  }
