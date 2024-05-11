@@ -10,7 +10,7 @@ const Tile = (props)=>{
     return(
         <div className="countryCard">
             <img className='cardImg' src={props.src} alt={props.alt} />
-            <h4>{props.name}</h4>
+            <h2>{props.name}</h2>
         </div>
     )
 }
